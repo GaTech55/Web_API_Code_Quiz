@@ -4,11 +4,6 @@ var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
 var choicesVar = document.getElementById("choices");
 
-startButton.addEventListener("click", function () {
-  introContainer.style.display = "none";
-  showChoices();
-});
-
 function showChoices() {
   var questionOne = "Commonly used data types DO NOT include:";
   var availableChoices = [
@@ -38,5 +33,16 @@ choicesVar.addEventListener("click", function (event) {
     console.log("You clicked a button");
     var selectedChoice = event.target.getAttribute("data-value");
     console.log(selectedChoice);
+
+    answer.textContent = "";
+    var choiceGrade = document.createElement("h3");
+    choiceGrade.textContent = selectedChoice;
+    answer.append(choiceGrade);
   }
+});
+//go to 42 minute for second question setup
+
+startButton.addEventListener("click", function () {
+  introContainer.style.display = "none";
+  showChoices();
 });
