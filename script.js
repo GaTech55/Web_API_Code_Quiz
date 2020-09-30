@@ -1,5 +1,7 @@
 // console.log("Hello World");
 var introContainer = document.getElementById("intro");
+//later will use the quizContainer when hiding to show  the All Done page
+var quizContainer = document.getElementById("quiz");
 var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
 var choicesVar = document.getElementById("choices");
