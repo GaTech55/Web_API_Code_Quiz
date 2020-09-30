@@ -1,88 +1,104 @@
 // console.log("Hello World");
+//Variables//////////
 var introContainer = document.getElementById("intro");
 //later will use the quizContainer when hiding to show  the All Done page
 var quizContainer = document.getElementById("quiz");
 var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
-var choicesVar = document.getElementById("choices");
+var optionsVar = document.getElementById("options");
 
-var quizObjects = {
-  stages: [
-    {
-      questionKey: "Commonly used data types DO NOT include: ",
-      choicesKey: ["strings", "booleans", "alerts", "numbers"],
-    },
-    {
-      questionKey:
-        "The condition in an if / else statement is enclosed within ____",
-      choicesKey: [
-        "quotes",
-        "curly brackets",
-        "parentheses",
-        "square brackets",
-      ],
-    },
-    {
-      questionKey: "Arrays in JavaScript can be used to store ____",
-      choicesKey: [
-        "numbers and strings",
-        "other arrays",
-        "booleans",
-        "all of the above",
-      ],
-    },
-    {
-      questionKey:
-        "String values must be enclosed within ____ when being assigned to variables",
-      choicesKey: ["commas", "curly brackets", "quotes", "parentheses"],
-    },
-    {
-      questionKey:
-        "A very useful tool used during development and debugging for printing content to the debugger is:",
-      choicesKey: ["JavaScript", "terminal / bash", "for loops", "console.log"],
-    },
-  ],
-};
+var currentStage = 0;
+var stages = [
+  {
+    questionKey: "Commonly used data types DO NOT include:",
+    optionsKey: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+  },
+  {
+    questionKey:
+      "The condition in an if / else statement is enclosed within ____.",
+    optionsKey: [
+      "1. quotes",
+      "2. curly brackets",
+      "3. parentheses",
+      "4. square brackets",
+    ],
+  },
+  {
+    questionKey: "Arrays in JavaScript can be used to store ____.",
+    optionsKey: [
+      "1. numbers and strings",
+      "2. other arrays",
+      "3. booleans",
+      "4. all of the above",
+    ],
+  },
+  {
+    questionKey:
+      "String values must be enclosed within ____ when being assigned to variables.",
+    optionsKey: [
+      "1. commas",
+      "2. curly brackets",
+      "3. quotes",
+      "4. parentheses",
+    ],
+  },
+  {
+    questionKey:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    optionsKey: [
+      "1. JavaScript",
+      "2. terminal / bash",
+      "3. for loops",
+      "4. console.log",
+    ],
+  },
+];
 
-function showChoices() {
-  var questionOne = "Commonly used data types DO NOT include:";
-  var availableChoices = [
-    "1. strings",
-    "2. booleans",
-    "3. alerts",
-    "4. numbers",
-  ];
-
-  for (var i = 0; i < availableChoices.length; i++) {
-    // console.log(availableChoices.length);
+//Functions//////////
+function showOptions(array) {
+  for (var i = 0; i < array.length; i++) {
     // Create element
     var button = document.createElement("button");
     // Add content
     button.setAttribute("class", "btn btn-info");
-    button.textContent = availableChoices[i];
-    button.setAttribute("data-value", availableChoices[i]);
+    button.textContent = array[i];
+    button.setAttribute("data-value", array[i]);
     //Append to an existing element
-    choicesVar.append(button);
+    optionsVar.append(button);
   }
-  questionVar.setAttribute("class", "h1");
-  questionVar.append(questionOne);
 }
 
-choicesVar.addEventListener("click", function (event) {
-  if (event.target.matches("button")) {
-    console.log("You clicked a button");
-    var selectedChoice = event.target.getAttribute("data-value");
-    console.log(selectedChoice);
-
-    answer.textContent = "";
-    var choiceGrade = document.createElement("h3");
-    choiceGrade.textContent = selectedChoice;
-    answer.append(choiceGrade);
-  }
-});
-//go to 42 minute for second question setup
-
+//Event Listeners//////////
 startButton.addEventListener("click", function () {
   introContainer.style.display = "none";
-  showChoices();
+  var questionToDisplay = stages[currentStage].questionKey;
+  var optionsToDisplay = stages[currentStage].optionsKey;
+  questionVar.setAttribute("class", "h1");
+  questionVar.append(questionToDisplay);
+  showOptions(optionsToDisplay);
 });
+
+optionsVar.addEventListener("click", function (event) {
+  if (event.target.matches("button")) {
+    var selectedOptions = event.target.getAttribute("data-value");
+    console.log(selectedOptions);
+
+    answer.textContent = "";
+    var optionGrade = document.createElement("h3");
+    optionGrade.textContent = selectedOptions;
+    answer.append(optionGrade);
+
+    setTimeout(function () {
+      currentStage++;
+      answer.textContent = "";
+      questionVar.textContent = "";
+      optionsVar.textContent = "";
+      var questionToDisplay = stages[currentStage].questionKey;
+      var optionsToDisplay = stages[currentStage].optionsKey;
+      questionVar.append(questionToDisplay);
+      showOptions(optionsToDisplay);
+    }, 1000);
+  }
+});
+
+//optimizing starts at 50 minutes
