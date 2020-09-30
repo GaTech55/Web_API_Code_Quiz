@@ -6,6 +6,44 @@ var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
 var choicesVar = document.getElementById("choices");
 
+var quizObjects = {
+  stages: [
+    {
+      questionKey: "Commonly used data types DO NOT include: ",
+      choicesKey: ["strings", "booleans", "alerts", "numbers"],
+    },
+    {
+      questionKey:
+        "The condition in an if / else statement is enclosed within ____",
+      choicesKey: [
+        "quotes",
+        "curly brackets",
+        "parentheses",
+        "square brackets",
+      ],
+    },
+    {
+      questionKey: "Arrays in JavaScript can be used to store ____",
+      choicesKey: [
+        "numbers and strings",
+        "other arrays",
+        "booleans",
+        "all of the above",
+      ],
+    },
+    {
+      questionKey:
+        "String values must be enclosed within ____ when being assigned to variables",
+      choicesKey: ["commas", "curly brackets", "quotes", "parentheses"],
+    },
+    {
+      questionKey:
+        "A very useful tool used during development and debugging for printing content to the debugger is:",
+      choicesKey: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+    },
+  ],
+};
+
 function showChoices() {
   var questionOne = "Commonly used data types DO NOT include:";
   var availableChoices = [
