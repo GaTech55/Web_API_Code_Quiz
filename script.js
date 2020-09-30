@@ -12,6 +12,7 @@ var stages = [
   {
     questionKey: "Commonly used data types DO NOT include:",
     optionsKey: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+    answerKey: "3. alerts",
   },
   {
     questionKey:
@@ -22,6 +23,7 @@ var stages = [
       "3. parentheses",
       "4. square brackets",
     ],
+    answerKey: "3. parentheses",
   },
   {
     questionKey: "Arrays in JavaScript can be used to store ____.",
@@ -31,6 +33,7 @@ var stages = [
       "3. booleans",
       "4. all of the above",
     ],
+    answerKey: "4. all of the above",
   },
   {
     questionKey:
@@ -41,6 +44,7 @@ var stages = [
       "3. quotes",
       "4. parentheses",
     ],
+    answerKey: "3. quotes",
   },
   {
     questionKey:
@@ -51,6 +55,7 @@ var stages = [
       "3. for loops",
       "4. console.log",
     ],
+    answerKey: "4. console.log",
   },
 ];
 
@@ -111,6 +116,6 @@ optionsVar.addEventListener("click", function (event) {
 // items left:
 // // * convert answer into "Correct!" or "Wrong!"
 // * add timer
-// * remove 15 seconds time if answer if incorrect
+// * remove 10 seconds time if answer if incorrect
 // * end quiz if time runs out or quiz completed
 // * if completed then capture time and provide that as score
