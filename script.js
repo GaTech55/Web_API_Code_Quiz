@@ -107,3 +107,10 @@ optionsVar.addEventListener("click", function (event) {
 });
 
 //optimizing starts at 50 minutes
+
+// items left:
+// // * convert answer into "Correct!" or "Wrong!"
+// * add timer
+// * remove 15 seconds time if answer if incorrect
+// * end quiz if time runs out or quiz completed
+// * if completed then capture time and provide that as score
