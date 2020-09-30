@@ -88,16 +88,21 @@ optionsVar.addEventListener("click", function (event) {
     optionGrade.textContent = selectedOptions;
     answer.append(optionGrade);
 
-    setTimeout(function () {
-      currentStage++;
-      answer.textContent = "";
-      questionVar.textContent = "";
-      optionsVar.textContent = "";
-      var questionToDisplay = stages[currentStage].questionKey;
-      var optionsToDisplay = stages[currentStage].optionsKey;
-      questionVar.append(questionToDisplay);
-      showOptions(optionsToDisplay);
-    }, 1000);
+    //check to see if we are at the end of the array
+    if (currentStage === stages.length - 1) {
+      quizContainer.style.display = "none";
+    } else {
+      setTimeout(function () {
+        currentStage++;
+        answer.textContent = "";
+        questionVar.textContent = "";
+        optionsVar.textContent = "";
+        var questionToDisplay = stages[currentStage].questionKey;
+        var optionsToDisplay = stages[currentStage].optionsKey;
+        questionVar.append(questionToDisplay);
+        showOptions(optionsToDisplay);
+      }, 1000);
+    }
   }
 });
 
