@@ -6,6 +6,10 @@ var quizContainer = document.getElementById("quiz");
 var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
 var optionsVar = document.getElementById("options");
+var titleAllDone = document.getElementById("titleDone");
+var finalScore = document.getElementById("finalScore");
+var seconds = document.getElementById("countdown").textContent;
+var navBar = document.getElementById("navBar");
 //time variables add stages.length*15
 
 //also add an empty variable for time
@@ -88,7 +92,15 @@ function showOptions(array, answer) {
     // console.log(array);
   }
 }
-// }
+
+function showAllDone() {
+  var titleVar = document.createElement("h1");
+  var finalScoreVar = document.createElement("p");
+  titleAllDone.setAttribute("class", "h1");
+  titleAllDone.append("All done!");
+  finalScore.append("Your final score is " + seconds + ".");
+  navBar.style.display = "none";
+}
 
 //Event Listeners//////////
 startButton.addEventListener("click", function () {
@@ -96,7 +108,7 @@ startButton.addEventListener("click", function () {
   var questionToDisplay = stages[currentStage].questionKey;
   var optionsToDisplay = stages[currentStage].optionsKey;
   var answerToDisplay = stages[currentStage].answerKey;
-  var seconds = document.getElementById("countdown").textContent;
+  // var seconds = document.getElementById("countdown").textContent;
   var countdown = setInterval(function () {
     seconds--;
     seconds == 1
@@ -124,6 +136,7 @@ optionsVar.addEventListener("click", function (event) {
     //check to see if we are at the end of the array
     if (currentStage === stages.length - 1) {
       quizContainer.style.display = "none";
+      showAllDone();
     } else {
       setTimeout(function () {
         currentStage++;
