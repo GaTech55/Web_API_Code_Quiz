@@ -24,7 +24,7 @@ This website was created to test a user's knowledge of Web API Code. When the qu
 
 ## Screenshots
 
-![DavidBrownAboutMe](./assets/david_brown_API_quiz.png)
+![DavidBrownAPIquiz](./assets/david_brown_API_quiz.png)
 
 ## Acceptance-Criteria
 
@@ -44,7 +44,7 @@ THEN I can save my initials and score
 
 ## Installation
 
-To access this project you will need to visit my GitHub page and the "Web_API_Code_Quiz" repository. After the repository is cloned you can make edits to the project in your repository. Any questions should be directed to [David Brown](mailto:gatech55@gmail.com). The project can be found here: [Web_API_Code_Quiz](https://github.com/GaTech55/Web_API_Code_Quiz). The website can be found here: [Password Generator](https://gatech55.github.io/Web_API_Code_Quiz/).
+To access this project you will need to visit my GitHub page and the "Web_API_Code_Quiz" repository. After the repository is cloned you can make edits to the project in your repository. Any questions should be directed to [David Brown](mailto:gatech55@gmail.com). The project can be found here: [Web_API_Code_Quiz](https://github.com/GaTech55/Web_API_Code_Quiz). The website can be found here: [Web API Code Quiz](https://gatech55.github.io/Web_API_Code_Quiz/).
 
 ## Credits
 
@@ -55,7 +55,7 @@ To access this project you will need to visit my GitHub page and the "Web_API_Co
 
 | **Commits** | **Contributor** |
 
-| 20 | [GaTech55](https://github.com/GaTech55)|
+| 17 | [GaTech55](https://github.com/GaTech55)|
 
 ## Copyright
 
