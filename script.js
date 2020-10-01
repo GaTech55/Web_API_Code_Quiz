@@ -8,20 +8,14 @@ var questionVar = document.getElementById("question");
 var optionsVar = document.getElementById("options");
 var titleAllDone = document.getElementById("titleDone");
 var finalScore = document.getElementById("finalScore");
+//time variables add stages.length*15
 var seconds = document.getElementById("countdown").textContent;
 var navBar = document.getElementById("navBar");
-//time variables add stages.length*15
-
-//also add an empty variable for time
-//add>> timerID=setinterval(clockTick,1000);<<<means we will perform this function ever second
-//clockTick function if value the time-15
-//clockTick function include a quizEnd
 var totalTime = 75;
 var wrongTime = 10;
-//array of objects
+//array of objects used to store questions, answers and selections
 var currentStage = 0;
 var stages = [
-  // NOTE: REMOVE PRETTIER TO SEE IF THAT FIXES THE EXTRA COMMA/box
   {
     questionKey: "Commonly used data types DO NOT include:",
     optionsKey: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
@@ -76,7 +70,6 @@ var stages = [
 function showOptions(array, answer) {
   for (var i = 0; i < stages[currentStage].optionsKey.length; i++) {
     // Create element
-    // for (var j = 0; j < 4; j++) {
     var button = document.createElement("button");
     var breakVar = document.createElement("br");
     // Add content
@@ -87,12 +80,11 @@ function showOptions(array, answer) {
     //Append to an existing element
     optionsVar.append(button);
     optionsVar.append(breakVar);
-    //NEED TO CREATE AN ELEMENT FOR BR
     console.log(button);
-    // console.log(array);
   }
 }
 
+// Function created to hide the quiz portion of the page
 function showAllDone() {
   var titleVar = document.createElement("h1");
   var finalScoreVar = document.createElement("p");
@@ -108,7 +100,6 @@ startButton.addEventListener("click", function () {
   var questionToDisplay = stages[currentStage].questionKey;
   var optionsToDisplay = stages[currentStage].optionsKey;
   var answerToDisplay = stages[currentStage].answerKey;
-  // var seconds = document.getElementById("countdown").textContent;
   var countdown = setInterval(function () {
     seconds--;
     seconds == 1
@@ -157,7 +148,6 @@ optionsVar.addEventListener("click", function (event) {
 
 // items left:
 // // * convert answer into "Correct!" or "Wrong!". Need to give it a top gray border
-// * add timer
 // * remove 10 seconds time if answer if incorrect
 // * end quiz if time runs out or quiz completed
-// * if completed then capture time and provide that as score
+// * complete highscore page and allow for entering of initials
