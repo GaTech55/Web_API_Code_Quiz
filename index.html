@@ -19,9 +19,16 @@
       <div class="d-inline">
         <a href="./highscores.html">View Highscores</a>
       </div>
-      <div class="float-right d-inline">Time:</div>
+      <div class="float-right d-inline">
+        Time:<span id="countdown">75</span> second<span id="plural">s</span>
+      </div>
     </header>
-    <div class="container" id="intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 text-center"></div>
+      </div>
+    </div>
+    <div class="container mt-5" id="intro">
       <div class="row">
         <div class="col-sm-3 text-center"></div>
         <div class="col-sm-6 text-center">
@@ -37,14 +44,15 @@
         </div>
       </div>
     </div>
-    <div class="container" id="quiz">
+    <div class="container mt-5" id="quiz">
       <div class="row">
-        <!-- <div class="col-sm-3 text-center"></div> -->
         <div class="col-sm-6" id="question"></div>
-        <!-- <div class="col-sm-3 text-center"></div> -->
-        <div class="col-sm-6" id="options"></div>
-        <hr />
-        <!-- <div class="col-sm-3 text-center"></div> -->
+      </div>
+      <div class="row">
+        <div class="col-sm-8" id="options"></div>
+      </div>
+      <br />
+      <div class="row">
         <div class="col-sm-6 font-italic" id="answer"></div>
       </div>
     </div>

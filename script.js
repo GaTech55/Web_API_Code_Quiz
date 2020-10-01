@@ -6,9 +6,26 @@ var quizContainer = document.getElementById("quiz");
 var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
 var optionsVar = document.getElementById("options");
-
+//time variables add stages.length*15
+var seconds = document.getElementById("countdown").textContent;
+var countdown = setInterval(function () {
+  seconds--;
+  seconds == 1
+    ? (document.getElementById("plural").textContent = "")
+    : (document.getElementById("plural").textContent = "s");
+  document.getElementById("countdown").textContent = seconds;
+  if (seconds <= 0) clearInterval(countdown);
+}, 1000);
+//also add an empty variable for time
+//add>> timerID=setinterval(clockTick,1000);<<<means we will perform this function ever second
+//clockTick function if value the time-15
+//clockTick function include a quizEnd
+var totalTime = 75;
+var wrongTime = 10;
+//array of objects
 var currentStage = 0;
 var stages = [
+  // NOTE: REMOVE PRETTIER TO SEE IF THAT FIXES THE EXTRA COMMA/box
   {
     questionKey: "Commonly used data types DO NOT include:",
     optionsKey: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
@@ -60,27 +77,37 @@ var stages = [
 ];
 
 //Functions//////////
-function showOptions(array) {
-  for (var i = 0; i < array.length; i++) {
+function showOptions(array, answer) {
+  for (var i = 0; i < stages[currentStage].optionsKey.length; i++) {
     // Create element
+    // for (var j = 0; j < 4; j++) {
     var button = document.createElement("button");
+    var breakVar = document.createElement("br");
     // Add content
     button.setAttribute("class", "btn btn-info");
     button.textContent = array[i];
-    button.setAttribute("data-value", array[i]);
+    button.setAttribute("data-value", answer);
+    button.style.marginTop = "5px";
     //Append to an existing element
     optionsVar.append(button);
+    optionsVar.append(breakVar);
+    //NEED TO CREATE AN ELEMENT FOR BR
+    console.log(button);
+    // console.log(array);
   }
 }
+// }
 
 //Event Listeners//////////
 startButton.addEventListener("click", function () {
   introContainer.style.display = "none";
   var questionToDisplay = stages[currentStage].questionKey;
   var optionsToDisplay = stages[currentStage].optionsKey;
+  var answerToDisplay = stages[currentStage].answerKey;
   questionVar.setAttribute("class", "h1");
   questionVar.append(questionToDisplay);
-  showOptions(optionsToDisplay);
+  // showOptions();
+  showOptions(optionsToDisplay, answerToDisplay);
 });
 
 optionsVar.addEventListener("click", function (event) {
@@ -89,9 +116,9 @@ optionsVar.addEventListener("click", function (event) {
     console.log(selectedOptions);
 
     answer.textContent = "";
-    var optionGrade = document.createElement("h3");
-    optionGrade.textContent = selectedOptions;
-    answer.append(optionGrade);
+    var optionPicked = document.createElement("h3");
+    optionPicked.textContent = selectedOptions;
+    answer.append(optionPicked);
 
     //check to see if we are at the end of the array
     if (currentStage === stages.length - 1) {
@@ -104,17 +131,20 @@ optionsVar.addEventListener("click", function (event) {
         optionsVar.textContent = "";
         var questionToDisplay = stages[currentStage].questionKey;
         var optionsToDisplay = stages[currentStage].optionsKey;
+        var answerToDisplay = stages[currentStage].answerKey;
         questionVar.append(questionToDisplay);
-        showOptions(optionsToDisplay);
+        // showOptions();
+        showOptions(optionsToDisplay, answerToDisplay);
+        //create a new function to check the answer outside of here then here compare the option to the answer
       }, 1000);
     }
   }
 });
 
-//optimizing starts at 50 minutes
+//left off at 14:30 check out 40:00 for time
 
 // items left:
-// // * convert answer into "Correct!" or "Wrong!"
+// // * convert answer into "Correct!" or "Wrong!". Need to give it a top gray border
 // * add timer
 // * remove 10 seconds time if answer if incorrect
 // * end quiz if time runs out or quiz completed
