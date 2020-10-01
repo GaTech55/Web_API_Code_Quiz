@@ -7,15 +7,7 @@ var startButton = document.getElementById("startBtn");
 var questionVar = document.getElementById("question");
 var optionsVar = document.getElementById("options");
 //time variables add stages.length*15
-var seconds = document.getElementById("countdown").textContent;
-var countdown = setInterval(function () {
-  seconds--;
-  seconds == 1
-    ? (document.getElementById("plural").textContent = "")
-    : (document.getElementById("plural").textContent = "s");
-  document.getElementById("countdown").textContent = seconds;
-  if (seconds <= 0) clearInterval(countdown);
-}, 1000);
+
 //also add an empty variable for time
 //add>> timerID=setinterval(clockTick,1000);<<<means we will perform this function ever second
 //clockTick function if value the time-15
@@ -104,6 +96,15 @@ startButton.addEventListener("click", function () {
   var questionToDisplay = stages[currentStage].questionKey;
   var optionsToDisplay = stages[currentStage].optionsKey;
   var answerToDisplay = stages[currentStage].answerKey;
+  var seconds = document.getElementById("countdown").textContent;
+  var countdown = setInterval(function () {
+    seconds--;
+    seconds == 1
+      ? (document.getElementById("plural").textContent = "")
+      : (document.getElementById("plural").textContent = "s");
+    document.getElementById("countdown").textContent = seconds;
+    if (seconds <= 0) clearInterval(countdown);
+  }, 1000);
   questionVar.setAttribute("class", "h1");
   questionVar.append(questionToDisplay);
   // showOptions();
@@ -140,8 +141,6 @@ optionsVar.addEventListener("click", function (event) {
     }
   }
 });
-
-//left off at 14:30 check out 40:00 for time
 
 // items left:
 // // * convert answer into "Correct!" or "Wrong!". Need to give it a top gray border
